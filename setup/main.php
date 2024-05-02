@@ -1,35 +1,35 @@
 <?php
-@error_reporting($_SERVER ["SERVER_NAME"] == "localhost" ? E_ALL : 0);
+//@error_reporting($_SERVER ["SERVER_NAME"] == "localhost" ? E_ALL : 0);
 
 // Changing file/directory permissions recursively
-$start_dir = BASE_DIR; // Starting directory
-$perms ['file'] = FILE_PERMISSIONS; // chmod value for files
-$perms ['folder'] = DIR_PERMISSIONS; // chmod value for folders
+//$start_dir = BASE_DIR; // Starting directory
+//$perms ['file'] = FILE_PERMISSIONS; // chmod value for files
+//$perms ['folder'] = DIR_PERMISSIONS; // chmod value for folders
 
-function chmod_r($dir) {
-	global $perms;
+//function chmod_r($dir) {
+//	global $perms;
 
-	$dp = @opendir($dir);
-	while($file = readdir($dp)) {
-		if (($file == ".") || ($file == ".."))
-		continue;
+//	$dp = @opendir($dir);
+//	while($file = readdir($dp)) {
+//		if (($file == ".") || ($file == ".."))
+//		continue;
 
-		$fullPath = $dir . '/' . $file;
+//		$fullPath = $dir . '/' . $file;
 
-		if(is_dir($fullPath)) {
-			// echo('DIR:' . $fullPath . "\n");
-			@chmod($fullPath, $perms ['folder']);
-			chmod_r($fullPath, $perms ['folder'], $perms ['file']);
-		} else {
-			// echo('FILE:' . $fullPath . "\n");
-			@chmod($fullPath, $perms ['file']);
-		}
-	}
-	closedir($dp);
-}
+//		if(is_dir($fullPath)) {
+//			// echo('DIR:' . $fullPath . "\n");
+//			@chmod($fullPath, $perms ['folder']);
+//			chmod_r($fullPath, $perms ['folder'], $perms ['file']);
+//		} else {
+//			// echo('FILE:' . $fullPath . "\n");
+//			@chmod($fullPath, $perms ['file']);
+//		}
+//	}
+//	closedir($dp);
+//}
 
-chmod_r($start_dir, $perms ['folder'], $perms ['file']);
-  
+//chmod_r($start_dir, $perms ['folder'], $perms ['file']);
+
 // Sets the local language based on the browser
 $language = @$_POST ['language'] ? $_POST ['language'] : $browserLang;
 
