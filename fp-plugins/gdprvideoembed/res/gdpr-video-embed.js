@@ -57,9 +57,9 @@
 
 			// Replace the placeholders with the extracted video ID or URL
 			if (video_platform === 'facebook') {
-				responsive_bbcode_video.innerHTML = window.gdprConfig.text[video_platform].replace(/\%video_url\%/g, video_url);
+				responsive_bbcode_video.textContent = window.gdprConfig.text[video_platform].replace(/\%video_url\%/g, video_url);
 			} else {
-				responsive_bbcode_video.innerHTML = window.gdprConfig.text[video_platform].replace(/\%id\%/g, video_id);
+				responsive_bbcode_video.textContent = window.gdprConfig.text[video_platform].replace(/\%id\%/g, video_id);
 			}
 
 			video_frame.parentNode.replaceChild(responsive_bbcode_video, video_frame);
