@@ -56,11 +56,13 @@
 			}
 
 			// Replace the placeholders with the extracted video ID or URL
+			let content;
 			if (video_platform === 'facebook') {
-				responsive_bbcode_video.innerHTML = window.gdprConfig.text[video_platform].replace(/\%video_url\%/g, video_url);
+				content = window.gdprConfig.text[video_platform].replace(/\%video_url\%/g, video_url);
 			} else {
-				responsive_bbcode_video.innerHTML = window.gdprConfig.text[video_platform].replace(/\%id\%/g, video_id);
+				content = window.gdprConfig.text[video_platform].replace(/\%id\%/g, video_id);
 			}
+			responsive_bbcode_video.textContent = content;
 
 			video_frame.parentNode.replaceChild(responsive_bbcode_video, video_frame);
 			document.querySelectorAll('.video-responsive_bbcode_video button')[i].addEventListener('click', function () {
