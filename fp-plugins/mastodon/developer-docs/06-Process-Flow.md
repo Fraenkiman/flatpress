@@ -541,7 +541,7 @@ flowchart TD
     SkipStatus["Aggregate skip reason"]
     Convert["Convert Mastodon HTML/media/tags to FlatPress markup"]
     StatusUrl["Read Status.url single-toot source link"]
-    Footer["Append [url=... target=_blank rel=&quot;nofollow noopener noreferrer&quot;]Mastodon[/url]"]
+    Footer["Append Mastodon source footer BBCode"]
     Guard["Enter plugin-owned local-write guard"]
     Save["entry_save imported entry"]
     Ignore["entry_saved hook ignored by guard"]
@@ -567,7 +567,7 @@ flowchart TD
     Filter -- "Yes" --> Convert --> StatusUrl --> Footer --> Guard --> Save --> Ignore --> Map --> Next
 ```
 
-The imported entry footer uses `Status.url`, which is the Mastodon single-status/toot URL, not the author `account.url`. `plugin_mastodon_imported_status_footer_bbcode()` adds `target="_blank"` and `rel="nofollow noopener noreferrer"` through FlatPress BBCode URL attributes; comment author links use the separate external-URL modifier path.
+The imported entry footer uses `Status.url`, which is the Mastodon single-status/toot URL, not the author `account.url`. `plugin_mastodon_imported_status_footer_bbcode()` adds `target="_blank"` and `rel="nofollow noopener noreferrer"` through FlatPress BBCode URL attributes; comment author links use the separate external-URL modifier path. The generated footer operation is <code>Append [url=... target=_blank rel=&quot;nofollow noopener noreferrer&quot;]Mastodon[/url]</code>.
 
 ### 1.5 Mastodon replies in a known imported thread to FlatPress comments
 
